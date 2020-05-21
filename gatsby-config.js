@@ -4,7 +4,8 @@ module.exports = {
   siteMetadata: {
     title: `Neruoscience Hypnosis Insitute`,
     description: `Reveal the unseen shackles that stoped from unleasing your full potential`,
-    author: `Emanuel Benedic`
+    author: `Emanuel Benedic`,
+    navArray: ['Home', 'About', 'Articles', 'Products', 'Contact']
   },
   plugins: [
     `gatsby-plugin-postcss`,
@@ -16,14 +17,15 @@ module.exports = {
         path: path.join(__dirname, `src`, `images`),
       },
     },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        useMozJpeg: false,
-        stripMetadata: true,
-        defaultQuality: 75,
-      },
-    },
+    // {
+    //   resolve: gatsby-plugin-sharp,
+    //   options: {
+    //     useMozJpeg: false,
+    //     stripMetadata: true,
+    //     defaultQuality: 75,
+    //   },
+    // },
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
