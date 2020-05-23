@@ -4,15 +4,14 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const CardComponent = () => {
+const CardComponent = ({cardInfo: {title, subtitle, description}}) => {
     return (
         <>
             <div className="card text-center">
-                <FontAwesomeIcon icon={faCoffee} />
-                <h3 className="text-base">Lorem, ipsum dolor.</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, dolorem!
-                </p>
+           
+                <h3 className="text-base"><FontAwesomeIcon icon={faCoffee} /> {title}</h3>
+                <h4>{subtitle}</h4>
+                <p>{description}</p>
             </div>
         </>
     )
