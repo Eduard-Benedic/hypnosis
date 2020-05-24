@@ -7,34 +7,28 @@ import Img from "gatsby-image"
 
 const HalfGridImg = ({gridData})  => {
 
+    const imgFluid = gridData.gridImage.fluid;
+
+
+    const title = gridData.gridText.title;
+    const subtitle = gridData.gridText.subtitle;
+    const description = gridData.gridText.description;
+
 
     return(
         <>
-            <div className="grid pt-16 grid-cols-2">
+            <div className="grid sm:grid-cols-2 grid-cols-1">
                 <div>
-                    {console.log(gridData, "grid data ar fi frumos")}
-                    {<Img fluid={gridData[0].node.gridImage.fluid}/>}
+                    {<Img fluid={imgFluid}/>}
                 </div>
+
                 <div>
-                <div className="flex bg-gray-200  flex-col h-full justify-center text-right px-10">
-                    <h2>{gridData[0].node.gridText.title}</h2>
-                    <h3>{gridData[0].node.gridText.subtitle}</h3>
-                    <p className="mb-2">{gridData[0].node.gridText.description} </p>
+                    <div className="flex bg-gray-200  flex-col h-full justify-center text-center sm:text-right px-10">
+                        <h2>{title}</h2>
+                        <h3>{subtitle}</h3>
+                        <p className="mb-2">{description} </p>
+                    </div>
                 </div>
-                </div>
-            </div>
-            <div className="grid grid-cols-2">
-                <div>
-                <div className="flex bg-gray-200 flex-col h-full justify-center text-left px-10">
-                    <h2>{gridData[1].node.gridText.title}</h2>
-                    <h3>{gridData[1].node.gridText.subtitle}</h3>
-                    <p className="mb-2">{gridData[1].node.gridText.description} </p>
-                </div>
-                </div>
-                <div>
-                    {<Img fluid={gridData[1].node.gridImage.fluid}/>}
-                </div>
-              
             </div>
         </>
     )
