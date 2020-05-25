@@ -11,11 +11,7 @@
 
 
 
-.grid-switcher {
-    display: grid;
-    grid-template: 'a b' auto 
-                    'b a' auto /1fr 1fr;
-}
+
 
 
 

@@ -66,8 +66,7 @@ const IndexPage = ({data}) =>  {
               return <HalfGridImg key={halfGrid.id} gridData={halfGrid} />
             })}
         </div>
-     
-        
+    
          <div className="container container-xl py-16 mx-auto text-center">
           <h1>{toolsText.title}</h1> 
           <p className="max-w-lg mx-auto">{toolsText.description}</p>
