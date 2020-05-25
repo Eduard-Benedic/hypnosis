@@ -4,8 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Neruoscience Hypnosis Insitute`,
     description: `Reveal the unseen shackles that stoped from unleasing your full potential`,
-    author: `Emanuel Benedic`,
-    navArray: ['Home', 'About', 'Articles', 'Products', 'Contact']
+    author: `Emanuel Benedic`
   },
   plugins: [
     `gatsby-plugin-postcss`,
@@ -26,6 +25,7 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

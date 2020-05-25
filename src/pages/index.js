@@ -51,28 +51,26 @@ const IndexPage = ({data}) =>  {
   return (
     <Layout>
       <SEO title="Home" />
-      <HomeBanner homeBannerData={homeBannerContenful}/>
+        <HomeBanner homeBannerData={homeBannerContenful} />
          <div className="container container-xl py-16 mx-auto">
           <h2 className="text-center mb-20">{serviceTitle}</h2>
-          <div className="grid  sm:grid-cols-4 grid-cols-2">
-            {serviceGrid.map(service => {
-              return <CardComponent key={service.id} cardInfo={service}/>
-            })}
-          
+            <div className="grid  sm:grid-cols-4 grid-cols-2">
+              {serviceGrid.map(service => {
+                return <CardComponent key={service.id} cardInfo={service}/>
+              })}
+            </div>
           </div>
-        </div>
         <div className="grid-switcher">
             {halfGridSection.map(halfGrid => {
               return <HalfGridImg key={halfGrid.id} gridData={halfGrid} />
             })}
         </div>
-    
-         <div className="container container-xl py-16 mx-auto text-center">
+        <div className="container container-xl py-16 mx-auto text-center">
           <h1>{toolsText.title}</h1> 
           <p className="max-w-lg mx-auto">{toolsText.description}</p>
             <Img fixed={toolsImg} />
           <BtnComponent text={'Read more'}/>
-       </div> 
+        </div> 
     </Layout>
   )
 }

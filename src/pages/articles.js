@@ -10,35 +10,39 @@ import ArticleCard from '../components/ArticleCard'
 
 
 
-// const articleStructure = {
-//     articleImage,
-//     articleTitle,
-//     articleSubtitle,
-//     articleAuthor,
-//     publishedAt,
-//     updatedAt,
-//     readingTime
-// }
+
 
 const ArticlePage = () => {
 
     const data = useStaticQuery(graphql`
-
-    {
-            allFile(limit: 1, filter: {relativePath: {eq: "sea.jpg"}}) {
-                edges {
-                node {
-                    childImageSharp {
-                        fluid (maxHeight: 900){
-                            ...GatsbyImageSharpFluid
+            {
+                allFile (filter: {relativePath: {eq: "sea.jpg"}}){
+                    edges {
+                        node {
+                            childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid_noBase64
+                                }
                             }
                         }
+                    }
                 }
+                allContentfulArticle {
+                    nodes {
+                    id
+                    slug
+                    publishedAt
+                    articleTitle
+                    articleSummary
+                    articleImage {
+                        fluid {
+                            ...GatsbyContentfulFluid_noBase64
+                        }
+                    }
+                    }
                 }
-            }
-    
-    }
-`);
+            }`
+    );
 
 
 
@@ -46,13 +50,15 @@ const ArticlePage = () => {
         <>
            <Layout>
                 <CommonBanner bannerData={{ imgFluid: data.allFile.edges[0].node.childImageSharp.fluid, 
-                                            title: 'Articles in one place', 
+                                            title: 'About Us', 
                                             subtitle: 'See all articles'
-                                        }}/>  
+                                        }} />  
                 <div className="container px-4 py-16 mx-auto grid grid-cols-2 row-gap-20 col-gap-10">
-                    <ArticleCard/>
-                    <ArticleCard />
-                    <ArticleCard />
+                
+                    {data.allContentfulArticle.nodes.map(articleSummary => {
+                        return  <ArticleCard key={articleSummary.id} 
+                                             articleData={articleSummary} />
+                    })}
                 </div>
            </Layout>
        </>

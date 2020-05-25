@@ -19,14 +19,14 @@ const HomeBanner = ({homeBannerData}) => {
                 {<Img durationFadeIn={600} 
                         fadeIn={true}
                         imgStyle={{maxHeight: '100vh'}}
-                        placeholderStyle={{maxHeight: '100vh'}}
+                        style={{maxHeight: '100vh'}}
                         fluid={imgFluid} />
                 }
                 <div className="absolute bg-banner-background z-10 w-full inset-0">
-                    <div className="container container-xl mx-auto absolute px-4 top-half text-white transform -translate-y-1/2">
-                    <h1 className="tracking-widest">{title}</h1>
-                    <h2>{subtitle}</h2>
-                    <p className="tracking-wider text-xl">{description}</p>
+                    <div className="container container-xl max-w-lg mx-auto absolute px-4 top-half text-white transform -translate-y-1/2">
+                        <h1 className="font-body tracking-widest">{title}</h1>
+                        <h2>{subtitle}</h2>
+                        <p className="font-body leading-relaxed tracking-wider text-xl">{description}</p>
                     </div>
                 </div>
             </div>

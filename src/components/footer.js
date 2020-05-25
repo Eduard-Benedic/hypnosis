@@ -1,10 +1,10 @@
 import React from "react"
 // import PropTypes from "prop-types"
 
-import CommonLink from "./CommonLink"
+import {Link} from 'gatsby'
 
 
-const Footer = ({siteNavigation}) => {
+const Footer = () => {
     return (
         <>
             <footer className="font-body bg-background-common">
@@ -12,10 +12,12 @@ const Footer = ({siteNavigation}) => {
                 <div className="grid grid-cols-2 py-8">
                     <div className="flex h-full items-center">
                         
-                    { siteNavigation.map((navLink, index) =>  {
-                        return <CommonLink key={index} redirectTo={navLink} />
-                            })
-                    }
+                <Link className="mr-4 tracking-widest uppercase text-white" to={'/'}>Home</Link>
+                <Link className="mr-4 tracking-widest uppercase text-white" to={'/articles'}>Articles</Link>
+                <Link className="mr-4 tracking-widest uppercase text-white" to={'/about'}>About</Link>
+                <Link className="mr-4 tracking-widest uppercase text-white" to={'/contact'}>Contact</Link>
+            
+        
 
                     </div>
                     <div className="flex flex-col content-center text-white tracking-wide text-right text-lg" >
