@@ -11,16 +11,14 @@ const ArticleCard = ({articleData}) => {
    
     return (
         <>
-        {console.log( articleData)}
-            <article className="grid grid-cols-5 border-r border-gray-400 pr-4">
-                <div className="col-span-2">
-                  
+            <article className="grid grid-cols-1 lg:grid-cols-5 border-r border-gray-400 pr-4">
+                <div className="mb-4 lg:col-span-2">
                     <Img fluid={articleData.articleImage.fluid} 
-                    durationFadeIn={600} 
-                    fadeIn={true}/>
+                        durationFadeIn={600} 
+                        fadeIn={true} />
                 </div>
-                <div className="col-span-3 pl-4" >
-                    <h2 className="text-xl ">{articleData.articleTitle}</h2>
+                <div className="lg:col-span-3 pl-2 lg:pl-4" >
+                    <h2 className="mb-2 lg:mb-auto">{articleData.articleTitle}</h2>
                     <div className="mt-2 mb-4">
                       <span className="text-sm"><i>Published on: </i> {articleData.publishedAt}</span> <br/>
                     </div>

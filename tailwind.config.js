@@ -1,3 +1,5 @@
+
+
 module.exports = {
     theme: {
         fontFamily: {
@@ -13,7 +15,8 @@ module.exports = {
                 'second-color': '#a77448',
                 'third-color': '#e3c58f',
                 'banner-background': '#774f7da3',
-                'background-common': '#845b84'
+                'background-common': '#845b84',
+                'main-color': '#845b84'
             }
         }
     }

@@ -52,11 +52,11 @@ const IndexPage = ({data}) =>  {
     <Layout>
       <SEO title="Home" />
         <HomeBanner homeBannerData={homeBannerContenful} />
-         <div className="container container-xl py-16 mx-auto">
-          <h2 className="text-center mb-20">{serviceTitle}</h2>
-            <div className="grid  sm:grid-cols-4 grid-cols-2">
-              {serviceGrid.map(service => {
-                return <CardComponent key={service.id} cardInfo={service}/>
+         <div className="container container-xl  py-10 md:py-20 mx-auto">
+          <h2 className="font-body text-center mb-16 sm:mb-20 underline-custom underline-custom--center">{serviceTitle}</h2>
+            <div className="grid row-gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+              {serviceGrid.map((service,index) => {
+                return <CardComponent key={service.id} cardInfo={service} iconNumber={index}/>
               })}
             </div>
           </div>
@@ -65,10 +65,10 @@ const IndexPage = ({data}) =>  {
               return <HalfGridImg key={halfGrid.id} gridData={halfGrid} />
             })}
         </div>
-        <div className="container container-xl py-16 mx-auto text-center">
-          <h1>{toolsText.title}</h1> 
-          <p className="max-w-lg mx-auto">{toolsText.description}</p>
-            <Img fixed={toolsImg} />
+        <div className="container container-xl py-8 sm:py-16 mx-auto text-center px-4">
+          <h2 className="font-body text-main-color tracking-wider">{toolsText.title}</h2> 
+          <p className="max-w-lg mx-auto mb-8">{toolsText.description}</p>
+            <Img fixed={toolsImg} className="mb-8 shadow-md"/>
           <BtnComponent text={'Read more'}/>
         </div> 
     </Layout>

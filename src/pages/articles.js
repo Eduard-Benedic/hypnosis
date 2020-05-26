@@ -53,7 +53,7 @@ const ArticlePage = () => {
                                             title: 'About Us', 
                                             subtitle: 'See all articles'
                                         }} />  
-                <div className="container px-4 py-16 mx-auto grid grid-cols-2 row-gap-20 col-gap-10">
+                <div className="container px-4 py-16 mx-auto grid grid-cols-1 lg:grid-cols-2 row-gap-20 col-gap-10">
                 
                     {data.allContentfulArticle.nodes.map(articleSummary => {
                         return  <ArticleCard key={articleSummary.id} 

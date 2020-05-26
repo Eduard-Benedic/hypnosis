@@ -69,7 +69,7 @@ const AboutPage = () => {
             <CommonBanner bannerData={{ imgFluid: bannerFluid, title}} /> 
                            
             <div className="container container-xl px-8 mx-auto">
-                <div className="grid grid-cols-2 gap-10 pt-20 pb-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 pt-10 pb-6 lg:pt-20 lg:pb-10">
                     <div>  
                         <h2 className="font-body underline-custom underline-custom--left">{firstColumnTitle}</h2>
                         {documentToReactComponents(firstColumnDescription)}
