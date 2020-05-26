@@ -15,7 +15,7 @@ const CommonBanner = ({bannerData: {imgFluid, title, subtitle}}) => {
                         fluid={imgFluid} />
                 }
                 <div className="absolute bg-banner-background z-10 w-full h-full inset-0 ">
-                    <div className="font-body container container-xl mx-auto px-4 text-white absolute bottom-0">
+                    <div className="font-body container container-xl mx-auto px-8 text-white absolute bottom-0 left-0 right-0">
                         <h1 className="font-body tracking-widest">{title}</h1>
                         <h2 className="font-body tracking-widest">{subtitle}</h2>
                     </div>

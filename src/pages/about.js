@@ -71,23 +71,23 @@ const AboutPage = () => {
             <div className="container container-xl px-8 mx-auto">
                 <div className="grid grid-cols-2 gap-10 pt-20 pb-10">
                     <div>  
-                        <h2 className="font-body">{firstColumnTitle}</h2>
+                        <h2 className="font-body underline-custom underline-custom--left">{firstColumnTitle}</h2>
                         {documentToReactComponents(firstColumnDescription)}
                     </div>
                     <div>
-                        <h2 className="font-body">{secondColumnTitle}</h2>
+                        <h2 className="font-body underline-custom underline-custom--left">{secondColumnTitle}</h2>
                         {documentToReactComponents(secondColumnDescription)} 
                     </div>
                 </div>
             </div>
-            <div className="container container-xl px-8  text-center">
+            <div className="container container-xl px-8 mx-auto  text-center">
                 <div className="max-w-lg mx-auto mb-8">
                     <h2 className="font-body">{thirdColumnTitle}</h2>
                     {documentToReactComponents(thirdColumnDescription)} 
                 </div>
                    <Img fluid={imgFluid} className='w-1/5 mx-auto mb-10'/>
             </div>
-            
+
             </Layout>
         </>
     )

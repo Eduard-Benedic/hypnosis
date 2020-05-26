@@ -4,7 +4,8 @@ module.exports = {
   siteMetadata: {
     title: `Neruoscience Hypnosis Insitute`,
     description: `Reveal the unseen shackles that stoped from unleasing your full potential`,
-    author: `Emanuel Benedic`
+    author: `Emanuel Benedic`,
+    companyName: 'Neurohypnosis Therapy'
   },
   plugins: [
     `gatsby-plugin-postcss`,

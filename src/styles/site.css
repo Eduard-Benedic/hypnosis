@@ -8,10 +8,50 @@
 
 @tailwind utilities;
 
+.underline-custom {
+    position: relative;
+}
+
+
+.underline-custom--left::after {
+    position: absolute;
+    height: 2px;
+    content: ' ';
+    background-color: #774f7da3;
+    width: 100px;
+    bottom: -10px;
+    left: 0;
+}
+
+
+.underline-custom--center::after {
+    position: absolute;
+    height: 2px;
+    content: ' ';
+    background-color: #774f7da3;
+    width: 100px;
+    bottom: -10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.grid-switcher  > div:nth-of-type(2) {
+    grid-template-areas: "a b";
+                         
+}
 
 
 
+.grid-switcher  > div:nth-of-type(2) > div:nth-of-type(1) {
+    grid-area: b;
+}
 
+
+
+.grid-switcher  > div:nth-of-type(2) > div:nth-of-type(2) {
+    grid-area: a;
+}
 
 
 

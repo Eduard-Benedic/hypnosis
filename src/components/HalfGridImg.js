@@ -25,7 +25,7 @@ const HalfGridImg = ({gridData})  => {
                 <div>
                     <div className="flex bg-gray-200  flex-col h-full justify-center text-center sm:text-right px-10">
                         <h2>{title}</h2>
-                        <h3>{subtitle}</h3>
+                        <h3 className="text-base italic mb-2">{subtitle}</h3>
                         <p className="mb-2">{description} </p>
                     </div>
                 </div>

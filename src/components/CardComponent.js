@@ -7,7 +7,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 const CardComponent = ({cardInfo: {title, subtitle, description}}) => {
     return (
         <>
-            <div className="card text-center">
+            <div className="text-center px-5">
            
                 <h3 className="text-base"><FontAwesomeIcon icon={faCoffee} /> {title}</h3>
                 <h4>{subtitle}</h4>
