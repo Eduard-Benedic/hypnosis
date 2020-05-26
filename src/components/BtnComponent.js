@@ -6,7 +6,7 @@ const BtnComponent = ({text, link}) => {
     return (
         <>
         <div>
-            <Link to={`/${link}`}>  <button className="font-body bg-banner-background text-white px-8 py-2 rounded">{text} </button></Link>
+            <Link to={`/${link}`}> <button className="btn">{text} </button></Link>
           
         </div>
          
