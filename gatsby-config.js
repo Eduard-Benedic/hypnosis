@@ -5,7 +5,25 @@ module.exports = {
     title: `Neruoscience Hypnosis Insitute`,
     description: `Reveal the unseen shackles that stoped from unleasing your full potential`,
     author: `Emanuel Benedic`,
-    companyName: 'Neurohypnosis Therapy'
+    companyName: 'Neurohypnosis Therapy',
+    menuLinks: [
+      {
+        name: 'home',
+        to: '/'
+      },
+      {
+        name: 'articles',
+        to: '/articles'
+      },
+      {
+        name: 'about',
+        to: '/about'
+      },
+      {
+        name: 'contact',
+        to: '/contact'
+      }
+    ]
   },
   plugins: [
     `gatsby-plugin-postcss`,

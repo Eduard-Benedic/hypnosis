@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 
+
 import HomeBanner from '../components/HomeBanner'
 import CardComponent from "../components/CardComponent"
 import HalfGridImg from "../components/HalfGridImg"
@@ -18,7 +19,7 @@ const IndexPage = ({data}) =>  {
 
   const dataContenfulNode = data.allContentfulHome.edges[0].node;
 
-
+  const metaDescription = dataContenfulNode.metaDescription;
   // HOME BANNER PROPS
   const homeBannerContenful = {
     title: dataContenfulNode.homeBanner.title,
@@ -45,12 +46,20 @@ const IndexPage = ({data}) =>  {
     description: dataContenfulNode.toolsDescription.description
   }
 
-  const toolsImg = dataContenfulNode.toolsImg.fixed;
+  const toolsImg = dataContenfulNode.toolsImg.fluid;
 
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="neurohypnosis because whatever care and stuff" 
+          description={metaDescription} 
+           meta={[
+              {charset: 'UTF-8'},
+              { name: 'description', content: metaDescription },
+              {'http-equiv': 'Content-Type', content: 'text/html;'},
+              {name: 'robots', content: 'index, follow'}
+            ]}
+      />
         <HomeBanner homeBannerData={homeBannerContenful} />
          <div className="container container-xl  py-10 md:py-20 mx-auto">
           <h2 className="font-body text-center mb-16 sm:mb-20 underline-custom underline-custom--center">{serviceTitle}</h2>
@@ -68,7 +77,7 @@ const IndexPage = ({data}) =>  {
         <div className="container container-xl py-8 sm:py-16 mx-auto text-center px-4">
           <h2 className="font-body text-main-color tracking-wider">{toolsText.title}</h2> 
           <p className="max-w-lg mx-auto mb-8">{toolsText.description}</p>
-            <Img fixed={toolsImg} className="mb-8 shadow-md"/>
+            <Img fluid={toolsImg} className="mb-8 shadow-md max-w-lg mx-auto"/>
           <BtnComponent text={'Read more'}/>
         </div> 
     </Layout>
@@ -82,9 +91,10 @@ export const query = graphql`
     allContentfulHome {
           edges {
             node {
+                        metaDescription
                         homeBanner {
                           image {
-                            fluid {
+                            fluid (maxWidth: 2200, quality: 100) {
                               ...GatsbyContentfulFluid_noBase64
                             }
                           }
@@ -118,8 +128,8 @@ export const query = graphql`
                           description
                         }
                         toolsImg {
-                            fixed(width: 600, height: 350) {
-                              ...GatsbyContentfulFixed_noBase64
+                            fluid(maxWidth: 900) {
+                              ...GatsbyContentfulFluid_noBase64
                             }
                         }
                       }

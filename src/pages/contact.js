@@ -4,6 +4,8 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+import SEO from '../components/seo'
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 
@@ -49,6 +51,7 @@ const ContactPage = ({data}) => {
     return (
         <>
         <Layout>
+            <SEO title="Home" description="description for contact page okay ?" />
             <div className="pt-20 px-2 md:pt-32 pb-10 md:pb-20 ">
                 <h1 className="font-body text-center underline-custom underline-custom--center">{title}</h1>
                 <h2 className="font-body text-center">{subtitle}</h2>

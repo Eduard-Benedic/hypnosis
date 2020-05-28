@@ -17,7 +17,7 @@ const AboutPage = () => {
                             edges {
                                 node {
                                 aboutBanner {
-                                    fluid {
+                                    fluid (maxWidth: 1900) {
                                         ...GatsbyContentfulFluid_tracedSVG
                                     }
                                 }
