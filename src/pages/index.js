@@ -11,7 +11,7 @@ import SEO from "../components/seo"
 import HomeBanner from '../components/HomeBanner'
 import CardComponent from "../components/CardComponent"
 import HalfGridImg from "../components/HalfGridImg"
-import BtnComponent from '../components/BtnComponent'
+import { Link } from 'gatsby'
 
 
 
@@ -75,10 +75,10 @@ const IndexPage = ({data}) =>  {
             })}
         </div>
         <div className="container container-xl py-8 sm:py-16 mx-auto text-center px-4">
-          <h2 className="font-body text-main-color tracking-wider">{toolsText.title}</h2> 
+          <h2 className="font-body underline-custom underline-custom--center text-main-color tracking-wider">{toolsText.title}</h2> 
           <p className="max-w-lg mx-auto mb-8">{toolsText.description}</p>
             <Img fluid={toolsImg} className="mb-8 shadow-md max-w-lg mx-auto"/>
-          <BtnComponent text={'Read more'}/>
+            <Link className="btn" to={`/neurofeedback`}> Read More</Link>
         </div> 
     </Layout>
   )

@@ -20,6 +20,10 @@ module.exports = {
         to: '/about'
       },
       {
+        name: 'Neurofeedback',
+        to: '/neurofeedback'
+      },
+      {
         name: 'contact',
         to: '/contact'
       }

@@ -61,16 +61,16 @@ exports.createPages = async ({graphql, actions}) => {
 
     chunk.forEach((chunk, index) => {   
         createPage({
-            path: index === 0 ? `/articles` : `articles/page/${index+1}`,
+            path: index === 0 ? `/articles` : `articles/${index+1}`,
             component: articleListTemplate,
             context: {
                 skip: PAGE_SIZE * index,
                 limit: PAGE_SIZE,
                 pageNumber: index + 1,
                 hasNextPage: index != chunk.length - 1,
-                nextPageLink: `/articles/page/${index + 2}`,
+                nextPageLink: `/articles/${index + 2}`,
                 hasPreviousPage: true,
-                previousPageLink: `/articles/page/${index}`
+                previousPageLink: `/articles/${index}`
             }
         })
     });

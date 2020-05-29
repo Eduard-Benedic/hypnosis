@@ -45,10 +45,11 @@ const Header = () => {
             <Link className="mr-4 tracking-widest uppercase text-white" to={'/'}>Home</Link>
             <Link className="mr-4 tracking-widest uppercase text-white" to={'/articles'}>Articles</Link>
             <Link className="mr-4 tracking-widest uppercase text-white" to={'/about'}>About</Link>
+            <Link className="mr-4 tracking-widest uppercase text-white" to={'/neurofeedback'}>Neurofeedback</Link>
             <Link className="mr-4 tracking-widest uppercase text-white" to={'/contact'}>Contact</Link>
+            
           </div>
         </nav>
-
       </header>
     </>
   )
