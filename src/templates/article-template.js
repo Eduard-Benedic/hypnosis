@@ -25,7 +25,7 @@ const ArticleTemplate = ({pageContext}) => {
                         <h3 className="text-sm"><span className="font-normal">Author:</span> <i>{author}</i></h3>
                    </div>
                    
-                    <Img sizes={pageContext.imageFixed} className='py-20 my-10 mx-auto' style={{maxWidth: '800px', height: '400px'}}/>
+                    <Img sizes={pageContext.imageFixed} className='py-20 my-10 mx-auto' style={{maxWidth: '800px', height: '400px', padding: '1rem'}}/>
                     <div className="container w-3/4 mx-auto sm:leading-loose leading-relaxed">
                         {documentToReactComponents(pageContext.articleBody)}
                     </div>

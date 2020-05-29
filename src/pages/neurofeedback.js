@@ -1,30 +1,70 @@
 import React from 'react'
 import Layout from '../components/layout'
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
+import {Link} from 'gatsby'
 
 import CommonBanner from '../components/CommonBanner'
 
-// import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 
-
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 
 const Neurofeedback = ({data}) => {
+    const contentfulNode = data.allContentfulNeurofeedback.edges[0].node;
+    
+    //================ BANNER =========================
+    const bannerFluid = contentfulNode.bannerImage.fluid;
+    const bannerTitle = contentfulNode.bannerTitle;
+    const bannerSubtitle = contentfulNode.bannerSubtitle;
+
+
+    //================ LEFT COLUMN ==========================
+
+    const leftColumnTitle = contentfulNode.leftColumn.title;
+    const leftColumnSubtitle = contentfulNode.leftColumn.subtitle;
+    const leftColumnRichText = contentfulNode.leftColumn.content.json;
+
+
+    //================ RIGHT COLUMN ==========================
+
+    const rightColumnTitle = contentfulNode.rightColumnTitle;
+    const rightColumnRichText = contentfulNode.rightColumnContent.json;
 
 
 
+    //================ SECOND SECTION ==========================
+
+
+    const secondSectionImageFluid = contentfulNode.secondSection.image.fluid;
+    const secondSectionTitle = contentfulNode.secondSection.title;
+    const secondSectionRichText = contentfulNode.secondSection.childContentfulPictureSetTextLinesRichTextNode.json;
 
     return (
         <>
         <Layout>
-        <CommonBanner bannerData={{ imgFluid: data.allFile.edges[0].node.childImageSharp.fluid, title: 'Neurofeedback', subtitle: 'Totul despre neurofeedback'}} /> 
+        <CommonBanner bannerData={{ imgFluid: bannerFluid, title: bannerTitle, subtitle: bannerSubtitle}} /> 
           <div className="container container-xl mx-auto py-16">
-              <div className="grid grid-cols-2 gap-8">
-                <h2 className="text-center mb-4">Lorem ipsum dolor sit amet. ? </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <p> Quis dicta fugit labore quia facilis fugiat molestias accusantium dolore, aliquid excepturi necessitatibus repellendus delectus laudantium natus blanditiis dolorum nam voluptatibus explicabo similique! Odio dolorum at, maxime aspernatur amet quod libero quasi corrupti sit ad reiciendis repudiandae consectetur omnis alias consequuntur autem.</p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 mb-16">
+                  <div className="text-left border-r border-gray-400 border-banner-background px-4 lg:px-8">
+                        <h2 className="mb-8 underline-custom underline-custom--left">{leftColumnTitle} </h2>
+                        <h3>{leftColumnSubtitle}</h3>
+                        {documentToReactComponents(leftColumnRichText)}
+                  </div>
+                  <div className="lg:text-left px-4 lg:px-8">
+                        <h3>{rightColumnTitle}</h3>
+                        {documentToReactComponents(rightColumnRichText)}
+                  </div>
               </div>
-             
+             <div className="container container-xl mx-auto px-6">
+                <h2 className="text-center mb-16 underline-custom underline-custom--center">{secondSectionTitle}</h2>
+                 <Img style={{height: '400px', marginBottom: '2rem'}} className="max-w-2xl mx-auto" fluid={secondSectionImageFluid}/>
+                 
+                 <div className="max-w-4xl mx-auto leading-loose">
+                    {documentToReactComponents(secondSectionRichText)}
+                    <p>To find out more <Link className="btn text-center mt-4 block sm:ml-3 sm:inline-block" to="/contact">Contact me</Link></p>
+                 </div>
+             </div>
           </div>
         </Layout>
             
@@ -34,19 +74,43 @@ const Neurofeedback = ({data}) => {
 
 
 export const pageQuery = graphql`
-        query imageQuery {
-            allFile(filter: {relativePath: {eq: "neurofeedback.jpg"}}) {
-                edges {
-                  node {
-                    childImageSharp {
-                      fluid(maxWidth: 2200) {
-                        ...GatsbyImageSharpFluid_noBase64
-                      }
-                    }
-                  }
+ {
+    allContentfulNeurofeedback {
+        edges {
+          node {
+            bannerImage {
+              fluid (maxWidth: 2200) {
+                ...GatsbyContentfulFluid_tracedSVG
+              }
+            }
+            bannerTitle
+            bannerSubtitle
+            leftColumn {
+              title
+              subtitle
+              content {
+                json
+              }
+            }
+            rightColumnTitle
+            rightColumnContent {
+              json
+            }
+            secondSection {
+              image {
+                fluid (maxWidth: 1200) {
+                    ...GatsbyContentfulFluid_tracedSVG
                 }
               }
+              title
+              childContentfulPictureSetTextLinesRichTextNode {
+                json
+              }
+            }
+          }
         }
+      }
+}
 `
 
 

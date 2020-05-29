@@ -6,6 +6,7 @@ import {useStaticQuery, graphql} from 'gatsby'
 
 
 const Footer = () => {
+    
 
     const data = useStaticQuery(graphql`
             query siteName {
@@ -45,3 +46,57 @@ const Footer = () => {
 
 
 export default Footer;
+
+
+//
+// const canvas = document.querySelector("#footer-canvas");
+//     const c = canvas.getContext("2d");
+
+//     canvas.width = innerWidth;
+//     canvas.height = 300;
+
+//     const wave = {
+//       y: canvas.height / 2,
+//       length: -0.005,
+//       amplitude: 93,
+//       frequency: 0.013,
+//     };
+
+//     const strokeColor = {
+//       h: 33,
+//       s: 93,
+//       l: 48,
+//     };
+
+//     const backgroundColor = {
+//       r: 89,
+//       g: 2,
+//       b: 2,
+//       a: 0.071,
+//     };
+
+//     let increment = wave.frequency;
+//     function animate() {
+//       requestAnimationFrame(animate);
+//       c.fillStyle = `rgba(${backgroundColor.r}, ${backgroundColor.g}, ${backgroundColor.b}, ${backgroundColor.a})`;
+//       c.fillRect(0, 0, canvas.width, canvas.height);
+//       c.beginPath();
+//       c.moveTo(0, wave.y);
+//       for (let i = 0; i < canvas.width; i++) {
+//         c.lineTo(
+//           i,
+//           wave.y +
+//             Math.sin(i * wave.length + increment) *
+//               wave.amplitude *
+//               Math.sin(increment)
+//         );
+//       }
+//       c.strokeStyle = `hsl(${strokeColor.h}, ${strokeColor.s}%, ${strokeColor.l}%)`;
+//       c.stroke();
+//       increment += wave.frequency;
+//     }
+//     animate();
+
+//     window.addEventListener("resize", function() {
+//       canvas.width = innerWidth;
+//     });
