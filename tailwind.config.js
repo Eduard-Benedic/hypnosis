@@ -1,6 +1,7 @@
 
 
 module.exports = {
+    purge: ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
     theme: {
         fontFamily: {
             'display': ['Antic Didone', 'sans-serif'],
