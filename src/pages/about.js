@@ -4,6 +4,8 @@ import {useStaticQuery, graphql} from 'gatsby'
 import Layout from '../components/layout'
 import CommonBanner from '../components/CommonBanner'
 import Img from 'gatsby-image'
+import SEO from '../components/seo'
+
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
@@ -12,39 +14,44 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 const AboutPage = () => {
 
     const data = useStaticQuery(graphql`
-                    {
-                        allContentfulAbout {
-                            edges {
-                                node {
-                                aboutBanner {
-                                    fluid (maxWidth: 1900) {
-                                        ...GatsbyContentfulFluid_tracedSVG
-                                    }
-                                }
-                                title
-                                firstColumnTitle
-                                firstColumnDescription {
-                                    json
-                                }
-                                secondColumnTitle
-                                secondColumnDescription {
-                                    json
-                                }
-                                thirdColumnTitle
-                                thirdColumnDescription {
-                                    json
-                                }
-                                aboutPicture {
-                                    fluid {
-                                        ...GatsbyContentfulFluid_tracedSVG
-                                    }
-                                }
-                                }
-                            }
-                            }
+    {
+        allContentfulAbout {
+            edges {
+                node {
 
-                    }`
-    );
+                seoTags {
+                    seoTitle
+                    seoMetadescription
+                }
+                aboutBanner {
+                    fluid (maxWidth: 1900) {
+                        ...GatsbyContentfulFluid_tracedSVG
+                    }
+                }
+                title
+                firstColumnTitle
+                firstColumnDescription {
+                    json
+                }
+                secondColumnTitle
+                secondColumnDescription {
+                    json
+                }
+                thirdColumnTitle
+                thirdColumnDescription {
+                    json
+                }
+                aboutPicture {
+                    fluid {
+                        ...GatsbyContentfulFluid_tracedSVG
+                    }
+                }
+                }
+            }
+            }
+
+    }`
+);
 
     
     const allContentfulNode = data.allContentfulAbout.edges[0].node;
@@ -63,9 +70,21 @@ const AboutPage = () => {
     const thirdColumnDescription = allContentfulNode.thirdColumnDescription.json;
 
     const imgFluid = allContentfulNode.aboutPicture.fluid;
+
+
+
+    const headTitle = allContentfulNode.seoTags.seoTitle;
+    const metaDescription = allContentfulNode.seoTags.seoMetadescription;
     return (
         <>
             <Layout>
+            <SEO title={headTitle} 
+                meta={[
+                        {charset: 'UTF-8'},
+                        { name: 'description', content: metaDescription },
+                        {'http-equiv': 'Content-Type', content: 'text/html;'},
+                    ]}
+            />
             <CommonBanner bannerData={{ imgFluid: bannerFluid, title}} /> 
                            
             <div className="container container-xl px-8 mx-auto">

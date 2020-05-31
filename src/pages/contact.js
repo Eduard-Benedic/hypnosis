@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+
 import SEO from '../components/seo'
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
@@ -15,6 +16,11 @@ export const query = graphql`
     allContentfulContact {
         edges {
           node {
+             
+            seoTags {
+              seoTitle
+              seoMetadescription
+            }
             textSet {
               title
               subtitle
@@ -47,11 +53,21 @@ const ContactPage = ({data}) => {
     const description = dataNode.textSet.description;
 
 
+    //==================== SEO TAGS =====================
+
+    const headTitle = dataNode.seoTags.seoTitle;
+    const metaDescription = dataNode.seoTags.seoMetadescription;
+
+
     const columns = dataNode.columns;
     return (
         <>
         <Layout>
-            <SEO title="Home" description="description for contact page okay ?" />
+            <SEO title={headTitle} 
+                description={[
+                  {name: 'description', content: metaDescription}
+                ]}
+            />
             <div className="pt-20 px-2 md:pt-32 pb-10 md:pb-20 ">
                 <h1 className="font-body text-center underline-custom underline-custom--center">{title}</h1>
                 <h2 className="font-body text-center">{subtitle}</h2>

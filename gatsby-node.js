@@ -10,6 +10,10 @@ exports.createPages = async ({graphql, actions}) => {
            query {
                 allContentfulArticle {
                     nodes {
+                    seoTags {
+                        seoTitle
+                        seoMetadescription
+                    }
                     articleImage {
                         
                         fixed(width: 800, height: 400) {
@@ -36,16 +40,18 @@ exports.createPages = async ({graphql, actions}) => {
     const articleTemplate = path.resolve('src/templates/article-template.js');
 
     result.data.allContentfulArticle.nodes.forEach(article => {
-     
+
      createPage({
         path: `/articles/${article.slug}/`,
         component: articleTemplate,
         context: {
-            imageFixed: article.articleImage.fixed,
-            title: article.articleTitle,
-            publishedAt: article.publishedAt,
-            articleAuthor: article.articleAuthor,
-            articleBody: article.articleBody.json
+                imageFixed: article.articleImage.fixed,
+                title: article.articleTitle,
+                publishedAt: article.publishedAt,   
+                articleAuthor: article.articleAuthor,
+                articleBody: article.articleBody.json,
+                seoTagsTitle: article.seoTags.seoTitle,
+                seoTagsMetaDescription: article.seoTags.seoMetadescription
             }
         })   
     })
@@ -74,7 +80,8 @@ exports.createPages = async ({graphql, actions}) => {
                 nextPageLink: `/articles/${index + 2}`,
                 hasPreviousPage: index != 0,
                 previousPageLink: index === 2 ? `/articles/${index - 1}` : `/articles/${index}`,
-                numberOfPages: chunkArray.length
+                numberOfPages: chunkArray.length,
+              
             }
         })
     });

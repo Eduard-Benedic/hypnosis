@@ -19,7 +19,6 @@ const IndexPage = ({data}) =>  {
 
   const dataContenfulNode = data.allContentfulHome.edges[0].node;
 
-  const metaDescription = dataContenfulNode.metaDescription;
   // HOME BANNER PROPS
   const homeBannerContenful = {
     title: dataContenfulNode.homeBanner.title,
@@ -48,33 +47,45 @@ const IndexPage = ({data}) =>  {
 
   const toolsImg = dataContenfulNode.toolsImg.fluid;
 
+  
+  // SEO Metatags
+  const titleHead =  dataContenfulNode.seoTags.seoTitle
+  const metaDescription = dataContenfulNode.seoTags.seoMetadescription;
+  
 
   return (
     <Layout>
-      <SEO title="neurohypnosis because whatever care and stuff" 
-          description={metaDescription} 
+      <SEO title={titleHead}
            meta={[
               {charset: 'UTF-8'},
               { name: 'description', content: metaDescription },
               {'http-equiv': 'Content-Type', content: 'text/html;'},
-              {name: 'robots', content: 'index, follow'}
             ]}
       />
         <HomeBanner homeBannerData={homeBannerContenful} />
-         <div className="container container-xl  py-10 md:py-20 mx-auto">
+         <div
+            data-sal="fade"
+            data-sal-duration="500"
+            data-sal-delay="200"
+            data-sal-easing="ease"  
+            className="container container-xl  py-10 md:py-20 mx-auto">
           <h2 className="font-body text-center mb-16 sm:mb-20 underline-custom underline-custom--center">{serviceTitle}</h2>
             <div className="grid row-gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               {serviceGrid.map((service,index) => {
-                return <CardComponent key={service.id} cardInfo={service} iconNumber={index}/>
+                return <CardComponent  key={service.id} cardInfo={service} iconNumber={index}/>
               })}
             </div>
           </div>
-        <div className="grid-switcher">
+        <div className="grid-switcher" >
             {halfGridSection.map(halfGrid => {
               return <HalfGridImg key={halfGrid.id} gridData={halfGrid} />
             })}
         </div>
-        <div className="container container-xl py-8 sm:py-16 mx-auto text-center px-4">
+        <div  data-sal="fade"
+              data-sal-duration="500"
+              data-sal-threshold="0"
+            
+             className="container container-xl py-8 sm:py-16 mx-auto text-center px-4">
           <h2 className="font-body underline-custom underline-custom--center text-main-color tracking-wider">{toolsText.title}</h2> 
           <p className="max-w-lg mx-auto mb-8">{toolsText.description}</p>
             <Img fluid={toolsImg} className="mb-8 shadow-md max-w-lg mx-auto"/>
@@ -91,7 +102,10 @@ export const query = graphql`
     allContentfulHome {
           edges {
             node {
-                        metaDescription
+                        seoTags {
+                          seoTitle
+                          seoMetadescription
+                        }
                         homeBanner {
                           image {
                             fluid (maxWidth: 2200, quality: 100) {

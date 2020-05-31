@@ -5,6 +5,8 @@ import Img from 'gatsby-image'
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
+import SEO from '../components/seo'
+
 
 
 
@@ -14,10 +16,23 @@ const ArticleTemplate = ({pageContext}) => {
     const articleTitle = pageContext.title;
     const publishedAt = pageContext.publishedAt;
     const author = pageContext.articleAuthor;
+
+
+    // SEO Tags
+    
+    const headTitle = pageContext.seoTagsTitle;
+    const metaDescription = pageContext.seoTagsMetaDescription;
     
     return (
         <>
            <Layout>
+               <SEO title={headTitle} 
+                    meta={[
+                        {charset: 'UTF-8'},
+                        { name: 'description', content: metaDescription },
+                        {'http-equiv': 'Content-Type', content: 'text/html;'},
+                    ]}
+               />
                <div className="container mx-auto py-24">
                    <div className="text-center">
                         <h1 className="font-body text-2xl uppercase mb-6 tracking-wider">{articleTitle}</h1>

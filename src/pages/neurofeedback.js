@@ -5,6 +5,8 @@ import {Link} from 'gatsby'
 
 import CommonBanner from '../components/CommonBanner'
 
+import SEO from '../components/seo'
+
 import Img from 'gatsby-image'
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
@@ -40,9 +42,20 @@ const Neurofeedback = ({data}) => {
     const secondSectionTitle = contentfulNode.secondSection.title;
     const secondSectionRichText = contentfulNode.secondSection.childContentfulPictureSetTextLinesRichTextNode.json;
 
+
+
+    // ================= SEO TAGS ====================
+    const headTitle = contentfulNode.seoTags.seoTitle;
+    const metaDescription = contentfulNode.seoTags.metaDescription;
     return (
         <>
         <Layout>
+          <SEO title={headTitle}
+               meta={[
+                 {charset: 'UTF-8'},
+                 {name: 'description', content: metaDescription}
+               ]} 
+          />
         <CommonBanner bannerData={{ imgFluid: bannerFluid, title: bannerTitle, subtitle: bannerSubtitle}} /> 
           <div className="container container-xl mx-auto py-16">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 mb-16">
@@ -78,6 +91,11 @@ export const pageQuery = graphql`
     allContentfulNeurofeedback {
         edges {
           node {
+            
+            seoTags {
+              seoTitle
+              seoMetadescription
+            }
             bannerImage {
               fluid (maxWidth: 2200) {
                 ...GatsbyContentfulFluid_tracedSVG
