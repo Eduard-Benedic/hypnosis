@@ -34,20 +34,31 @@ const ArticlePage = ({data, pageContext}) => {
                 </div>
 
                 <div className="container container-xl mx-auto mb-10 px-8 flex justify-center relative">
-                {   pageContext &&
+                    {pageContext &&
                     pageContext.hasPreviousPage && (
-                    <Link class="font-body font-bold border-b-2 border-main-color text-xl flex items-center absolute left-0" to={pageContext.previousPageLink}>
+                    <Link to={pageContext.previousPageLink} className="font-body font-bold border-b-2 border-main-color text-xl flex items-center absolute left-0">
                         <small>Previous Page</small>
                     </Link>
                     )}
 
-                    <div>1</div>
-                    <div>1</div>
-                    <div>1</div>
+                    <ul className="flex justify-center max-w-lg">
+                        
+                        {Array.from({length: pageContext.numberOfPages + 1}, (_, i) => {
+                          
+                        return ( 
+                            i === 0  ?  '' :  <li key={i} className={pageContext.pageNumber === i ? 'text-2xl bg-banner-background text-white px-2 py-2 rounded-md mr-2' : 'mr-2'}>
+                            <Link to={`/articles/${i}`}>{i}</Link>
+                        </li>
+                               
+                          
+                          ) 
+                        })}
+                    </ul>
+               
 
                 {   pageContext &&
                     pageContext.hasNextPage && (
-                    <Link class="font-body font-bold border-b-2 border-main-color text-xl flex items-center absolute right-0" to={pageContext.nextPageLink}>
+                    <Link className="font-body font-bold border-b-2 border-main-color text-xl flex items-center absolute right-0" to={pageContext.nextPageLink}>
                         <small>Next page</small>
                     </Link>
                 )}

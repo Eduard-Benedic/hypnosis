@@ -55,22 +55,26 @@ exports.createPages = async ({graphql, actions}) => {
     
     const articleListTemplate = path.resolve('src/templates/article-list.js');
 
-    const PAGE_SIZE = 2;
+    const PAGE_SIZE = 6;
 
-    let chunk = _.chunk(result.data.allContentfulArticle.nodes, PAGE_SIZE);
+    let chunkArray = _.chunk(result.data.allContentfulArticle.nodes, PAGE_SIZE);
 
-    chunk.forEach((chunk, index) => {   
+   
+    chunkArray.forEach((chunk, index) => {   
         createPage({
-            path: index === 0 ? `/articles` : `articles/${index+1}`,
+            // path: index === 0 ? `/articles` : `articles/${index+1}`,
+            path: `articles/${index+1}`,
             component: articleListTemplate,
             context: {
+                
                 skip: PAGE_SIZE * index,
                 limit: PAGE_SIZE,
                 pageNumber: index + 1,
-                hasNextPage: index != chunk.length - 1,
+                hasNextPage: index != chunkArray.length - 1,
                 nextPageLink: `/articles/${index + 2}`,
-                hasPreviousPage: true,
-                previousPageLink: `/articles/${index}`
+                hasPreviousPage: index != 0,
+                previousPageLink: index === 2 ? `/articles/${index - 1}` : `/articles/${index}`,
+                numberOfPages: chunkArray.length
             }
         })
     });

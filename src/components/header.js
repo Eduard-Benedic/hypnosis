@@ -43,7 +43,7 @@ const Header = () => {
           <nav style={{backgroundColor: '#6b366be0'}} className={`md:hidden fixed inset-0 z-40 transform ${nav ? '-translate-x-full' : 'translate-x-0'} text-white flex flex-col h-screen justify-center items-center transition transition-transform duration-300 ease-linear`}>
             
             {menuLinks.map((link, index) => {
-              return  <Link data-link="true"  className="mr-4 mb-5 tracking-widest uppercase text-white" to={link.to}>{link.name}</Link>
+              return  <Link key={index} data-link="true"  className="mr-4 mb-5 tracking-widest uppercase text-white" to={link.to}>{link.name}</Link>
             })}
           </nav>
         </div>
