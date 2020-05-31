@@ -25,7 +25,7 @@ const Header = () => {
 
   const menuLinks = data.site.siteMetadata.menuLinks;
 
-  const [nav, showNav] = useState(false);
+  const [nav, showNav] = useState(true);
 
 
  
@@ -34,12 +34,10 @@ const Header = () => {
       <header className="font-body w-full fixed z-50 top-0 left-0 right-0">
         <div className="block md:hidden fixed z-50 top-0 right-0 pt-8 pr-4 text-4xl text-right" style={{color: '#F97F8C'}}>
           
-           <FontAwesomeIcon className={!nav ? 'hidden' : 'block'}  onClick={() => showNav(!nav)}  icon={faBars} />
+           <FontAwesomeIcon className={!nav ? 'hidden' : 'block'} onClick={() => showNav(!nav)}  icon={faBars} />
            <FontAwesomeIcon className={nav ? 'hidden' : 'block'} onClick={() => showNav(!nav)}  icon={faTimes} />
         </div>
-        <div onClick={() => {
-          showNav(!nav)
-        }}>
+        <div>
           <nav style={{backgroundColor: '#6b366be0'}} className={`md:hidden fixed inset-0 z-40 transform ${nav ? '-translate-x-full' : 'translate-x-0'} text-white flex flex-col h-screen justify-center items-center transition transition-transform duration-300 ease-linear`}>
             
             {menuLinks.map((link, index) => {

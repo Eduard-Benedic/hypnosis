@@ -23,7 +23,7 @@ const HalfGridImg = ({gridData})  => {
                 </div>
 
                 <div>
-                    <div className="flex bg-gray-200 flex-col h-full justify-center text-center sm:text-right px-4 pt-4 sm:px-10">
+                    <div className="flex flex-col justify-center py-8 sm:py-0 px-4 sm:px-10 bg-gray-200  h-full  text-center sm:text-right">
                         <h2 className="font-body text-main-color mb-2 md:mb-5">{title}</h2>
                         <h3 className="text-base italic mb-2">{subtitle}</h3>
                         <p className="mb-2">{description} </p>

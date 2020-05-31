@@ -82,7 +82,7 @@ const IndexPage = ({data}) =>  {
             })}
         </div>
         <div  data-sal="fade"
-              data-sal-duration="500"
+              data-sal-duration="800"
               data-sal-threshold="0"
             
              className="container container-xl py-8 sm:py-16 mx-auto text-center px-4">

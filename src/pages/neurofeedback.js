@@ -91,7 +91,6 @@ export const pageQuery = graphql`
     allContentfulNeurofeedback {
         edges {
           node {
-            
             seoTags {
               seoTitle
               seoMetadescription
