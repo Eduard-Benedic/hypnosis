@@ -7,12 +7,10 @@ import Img from "gatsby-image"
 
 const HalfGridImg = ({gridData})  => {
 
-    const imgFluid = gridData.gridImage.fluid;
-
-
-    const title = gridData.gridText.title;
-    const subtitle = gridData.gridText.subtitle;
-    const description = gridData.gridText.description;
+    const imgFluid = gridData.image.childImageSharp.fluid;
+    const title = gridData.textTriad.title;
+    const subtitle = gridData.textTriad.subtitle;
+    const description = gridData.textTriad.description;
 
 
     return(

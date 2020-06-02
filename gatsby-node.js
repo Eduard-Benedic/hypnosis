@@ -5,65 +5,59 @@ const _ = require('lodash');
 
 exports.createPages = async ({graphql, actions}) => {
     const { createPage } = actions;
+    
 
     const result = await graphql(`
-           query {
-                allContentfulArticle {
-                    nodes {
-                    seoTags {
-                        seoTitle
-                        seoMetadescription
-                    }
-                    articleImage {
-                        
-                        fixed(width: 800, height: 400) {
-                            tracedSVG
-                            aspectRatio
-                            srcWebp
-                            srcSetWebp
-                          }  
-                    }
-                        slug
-                        articleTitle
-                        articleAuthor
-                        publishedAt
-                        articleBody {
-                            json
+                query {
+                    allStrapiArticle {
+                        edges {
+                        node {
+                            slug
+                            title
+                            published_on(formatString: "")
+                            image {
+                                childImageSharp {
+                                    fixed (width: 800, height: 400) {
+                                            tracedSVG
+                                            aspectRatio
+                                            srcWebp
+                                            srcSetWebp
+                                        }  
+                                    }
+                            }
+                            content
+                            
+                         }
                         }
                     }
-                }
-            }
+                } 
     `);
-    
   
 
     const articleTemplate = path.resolve('src/templates/article-template.js');
 
-    result.data.allContentfulArticle.nodes.forEach(article => {
-
-     createPage({
-        path: `/articles/${article.slug}/`,
-        component: articleTemplate,
-        context: {
-                imageFixed: article.articleImage.fixed,
-                title: article.articleTitle,
-                publishedAt: article.publishedAt,   
-                articleAuthor: article.articleAuthor,
-                articleBody: article.articleBody.json,
-                seoTagsTitle: article.seoTags.seoTitle,
-                seoTagsMetaDescription: article.seoTags.seoMetadescription
-            }
-        })   
-    })
 
 
+    result.data.allStrapiArticle.edges.forEach(article => {
 
-    
+        const articleNode = article.node;
+        createPage({
+           path: `/articles/${articleNode.slug}/`,
+           component: articleTemplate,
+           context: {
+                   imageFixed: articleNode.image.childImageSharp.fixed,
+                   title: articleNode.title,
+                   publishedOn: articleNode.published_on,   
+                   articleBody: articleNode.content
+               }
+           })   
+       })
+
     const articleListTemplate = path.resolve('src/templates/article-list.js');
 
-    const PAGE_SIZE = 6;
+    const PAGE_SIZE = 1;
 
-    let chunkArray = _.chunk(result.data.allContentfulArticle.nodes, PAGE_SIZE);
+    let chunkArray = _.chunk(result.data.allStrapiArticle.edges, PAGE_SIZE);
 
    
     chunkArray.forEach((chunk, index) => {   
@@ -72,7 +66,6 @@ exports.createPages = async ({graphql, actions}) => {
             path: `articles/${index+1}`,
             component: articleListTemplate,
             context: {
-                
                 skip: PAGE_SIZE * index,
                 limit: PAGE_SIZE,
                 pageNumber: index + 1,
@@ -81,10 +74,10 @@ exports.createPages = async ({graphql, actions}) => {
                 hasPreviousPage: index != 0,
                 previousPageLink: index === 2 ? `/articles/${index - 1}` : `/articles/${index}`,
                 numberOfPages: chunkArray.length,
-              
             }
         })
     });
+
 }
 
 

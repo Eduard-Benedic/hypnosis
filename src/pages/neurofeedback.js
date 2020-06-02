@@ -9,74 +9,84 @@ import SEO from '../components/seo'
 
 import Img from 'gatsby-image'
 
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+
 
 
 const Neurofeedback = ({data}) => {
-    const contentfulNode = data.allContentfulNeurofeedback.edges[0].node;
+   
+   
+    const strapiNode = data.allStrapiNeurofeedbackpage.edges[0].node;
+
+    //  =============== BANNER  =========================
+
+    const banner = {
+      fluid: strapiNode.banner.image.childImageSharp.fluid,
+      title: strapiNode.banner.title,
+      subtitle: strapiNode.banner.subtitle
+    }
+
     
-    //================ BANNER =========================
-    const bannerFluid = contentfulNode.bannerImage.fluid;
-    const bannerTitle = contentfulNode.bannerTitle;
-    const bannerSubtitle = contentfulNode.bannerSubtitle;
+    const leftColumn = {
+      title: strapiNode.leftcolumn.title,
+      subtitle: strapiNode.leftcolumn.subtitle,
+      content: strapiNode.leftcolumn.description
+    }
 
 
-    //================ LEFT COLUMN ==========================
-
-    const leftColumnTitle = contentfulNode.leftColumn.title;
-    const leftColumnSubtitle = contentfulNode.leftColumn.subtitle;
-    const leftColumnRichText = contentfulNode.leftColumn.content.json;
-
-
-    //================ RIGHT COLUMN ==========================
-
-    const rightColumnTitle = contentfulNode.rightColumnTitle;
-    const rightColumnRichText = contentfulNode.rightColumnContent.json;
+    const rightColumn = {
+      title: strapiNode.rightcolumn.title,
+      subtitle: strapiNode.rightcolumn.subtitle,
+      content: strapiNode.rightcolumn.description
+    }
 
 
-
-    //================ SECOND SECTION ==========================
-
-
-    const secondSectionImageFluid = contentfulNode.secondSection.image.fluid;
-    const secondSectionTitle = contentfulNode.secondSection.title;
-    const secondSectionRichText = contentfulNode.secondSection.childContentfulPictureSetTextLinesRichTextNode.json;
+    // ========== MAJOR SECTION =====================
 
 
 
-    // ================= SEO TAGS ====================
-    const headTitle = contentfulNode.seoTags.seoTitle;
-    const metaDescription = contentfulNode.seoTags.metaDescription;
+    const majorSection = {
+      fluid: strapiNode.image.childImageSharp.fluid,
+      title: strapiNode.title,
+      content: strapiNode.largecontent
+    }
+   
+   
+   
     return (
         <>
         <Layout>
-          <SEO title={headTitle}
+          <SEO title={'title'}
                meta={[
                  {charset: 'UTF-8'},
-                 {name: 'description', content: metaDescription}
+                 {name: 'description', content: 'okay'}
                ]} 
           />
-        <CommonBanner bannerData={{ imgFluid: bannerFluid, title: bannerTitle, subtitle: bannerSubtitle}} /> 
+        <CommonBanner bannerData={{ imgFluid: banner.fluid, title: banner.title, subtitle: banner.subtitle}} /> 
           <div className="container container-xl mx-auto py-16">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 mb-16">
                   <div className="text-left border-r border-gray-400 border-banner-background px-4 lg:px-8">
-                        <h2 className="mb-8 underline-custom underline-custom--left">{leftColumnTitle} </h2>
-                        <h3>{leftColumnSubtitle}</h3>
-                        {documentToReactComponents(leftColumnRichText)}
+                        <h2 className="mb-8 underline-custom underline-custom--left">{leftColumn.title} </h2>
+                        <h3>{leftColumn.subtitle}</h3>
+                        <p>{leftColumn.content}</p>
+                      
                   </div>
                   <div className="lg:text-left px-4 lg:px-8">
-                        <h3>{rightColumnTitle}</h3>
-                        {documentToReactComponents(rightColumnRichText)}
+                        <h3>{rightColumn.title}</h3>
+                        <p>{rightColumn.content}</p>
+                       
                   </div>
               </div>
              <div className="container container-xl mx-auto px-6">
-                <h2 className="text-center mb-16 underline-custom underline-custom--center">{secondSectionTitle}</h2>
-                 <Img style={{height: '400px', marginBottom: '2rem'}} className="max-w-2xl mx-auto" fluid={secondSectionImageFluid}/>
+                <h2 className="text-center mb-16 underline-custom underline-custom--center">{majorSection.title}</h2>
                  
-                 <div className="max-w-4xl mx-auto leading-loose">
-                    {documentToReactComponents(secondSectionRichText)}
-                    <p>To find out more <Link className="btn text-center mt-4 block sm:ml-3 sm:inline-block" to="/contact">Contact me</Link></p>
-                 </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2">
+                  <Img style={{maxHeight: '400px'}} fluid={majorSection.fluid}/>
+                  <div className="max-w-4xl mx-auto leading-loose px-5 pt-5 sm:pt-0">
+                    <p>{majorSection.content}</p>  
+                      <p>To find out more <Link className="btn text-center mt-4 block sm:ml-3 sm:inline-block" to="/contact">Contact me</Link></p>
+                  </div>
+                </div>
+                 
              </div>
           </div>
         </Layout>
@@ -88,42 +98,39 @@ const Neurofeedback = ({data}) => {
 
 export const pageQuery = graphql`
  {
-    allContentfulNeurofeedback {
+      allStrapiNeurofeedbackpage {
         edges {
           node {
-            seoTags {
-              seoTitle
-              seoMetadescription
-            }
-            bannerImage {
-              fluid (maxWidth: 2200) {
-                ...GatsbyContentfulFluid_tracedSVG
-              }
-            }
-            bannerTitle
-            bannerSubtitle
-            leftColumn {
+            banner {
               title
               subtitle
-              content {
-                json
-              }
-            }
-            rightColumnTitle
-            rightColumnContent {
-              json
-            }
-            secondSection {
               image {
-                fluid (maxWidth: 1200) {
-                    ...GatsbyContentfulFluid_tracedSVG
+                childImageSharp {
+                  fluid(maxWidth: 2200) {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
                 }
               }
+            }
+            leftcolumn {
               title
-              childContentfulPictureSetTextLinesRichTextNode {
-                json
+              subtitle
+              description
+            }
+            rightcolumn {
+              title
+              subtitle
+              description
+            }
+            image {
+              childImageSharp {
+                fluid (maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
               }
             }
+            title
+            largecontent
           }
         }
       }

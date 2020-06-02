@@ -33,13 +33,13 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-scroll-reveal`,
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: `f0swv3vglho9`,
-        accessToken: `7s2L8xHt1gKcqm_VN7E7kRQBPUrhGlIvFYeesAMoD_8`
-      }
-    },
+    // {
+    //   resolve: `gatsby-source-contentful`,
+    //   options: {
+    //     spaceId: `f0swv3vglho9`,
+    //     accessToken: `7s2L8xHt1gKcqm_VN7E7kRQBPUrhGlIvFYeesAMoD_8`
+    //   }
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -49,7 +49,15 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://localhost:1337`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [`article`],
+        singleTypes: [`homepage`, `aboutpage`, `neurofeedbackpage`],
+      },  
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
