@@ -4,7 +4,7 @@ import { faCoffee, faClock, faSpa, faCouch } from '@fortawesome/free-solid-svg-i
 
 
 
-const CardComponent = ({cardInfo: {title, subtitle, description}, iconNumber}) => {
+const CardComponent = ({data: {title, subtitle, description}, iconNumber}) => {
 
     const icons = [faClock, faCoffee, faSpa, faCouch];
     return (

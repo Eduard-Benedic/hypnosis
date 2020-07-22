@@ -7,13 +7,10 @@ import Img from 'gatsby-image'
 
 
 
-const HomeBanner = ({homeBannerData}) => {
+const HomeBanner = ({data: {title, subtitle,description, fluid}}) => {
 
 
-    const title =  homeBannerData.title;
-    const subtitle =  homeBannerData.subtitle;
-    const description = homeBannerData.description;
-    const imgFluid = homeBannerData.imgFluid;
+    
     
     return (
         <>
@@ -22,7 +19,7 @@ const HomeBanner = ({homeBannerData}) => {
                         fadeIn={true}
                         imgStyle={{maxHeight: '100vh'}}
                         style={{maxHeight: '100vh'}}
-                        fluid={imgFluid} />
+                        fluid={fluid} />
                 }
                 <div className="absolute bg-banner-background z-10 w-full inset-0">
                     <div className="container container-xl max-w-lg mx-auto absolute px-4 top-half text-white transform -translate-y-1/2">

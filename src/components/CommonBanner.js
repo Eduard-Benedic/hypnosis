@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 
 
-const CommonBanner = ({bannerData: {imgFluid, title, subtitle}}) => {
+const CommonBanner = ({data: {fluid, title, subtitle}}) => {
 
     return (
         <>
@@ -12,7 +12,7 @@ const CommonBanner = ({bannerData: {imgFluid, title, subtitle}}) => {
                         imgStyle={{maxHeight: '60vh'}}
                         style={{maxHeight: '60vh'}}
                         placeholderStyle={{maxHeight: '60vh'}}
-                        fluid={imgFluid} />
+                        fluid={fluid} />
                 }
                 <div className="absolute bg-banner-background z-10 w-full h-full inset-0 ">
                     <div className="font-body container container-xl mx-auto px-8 text-white absolute bottom-0 left-0 right-0">

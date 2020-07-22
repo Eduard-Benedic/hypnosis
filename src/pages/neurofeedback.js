@@ -15,41 +15,19 @@ import Img from 'gatsby-image'
 const Neurofeedback = ({data}) => {
    
    
-    const strapiNode = data.allStrapiNeurofeedbackpage.edges[0].node;
-
-    //  =============== BANNER  =========================
-
-    const banner = {
-      fluid: strapiNode.banner.image.childImageSharp.fluid,
-      title: strapiNode.banner.title,
-      subtitle: strapiNode.banner.subtitle
-    }
-
-    
-    const leftColumn = {
-      title: strapiNode.leftcolumn.title,
-      subtitle: strapiNode.leftcolumn.subtitle,
-      content: strapiNode.leftcolumn.description
-    }
-
-
-    const rightColumn = {
-      title: strapiNode.rightcolumn.title,
-      subtitle: strapiNode.rightcolumn.subtitle,
-      content: strapiNode.rightcolumn.description
-    }
+  const frontmatter = data.allMarkdownRemark.edges[0].node.frontmatter;
+  const pagetitle = frontmatter.pagetitle;
+  const bannerData = {
+      title: frontmatter.banner.title,
+      fluid: frontmatter.banner.image.childImageSharp.fluid
+  }
+  
 
 
     // ========== MAJOR SECTION =====================
 
 
 
-    const majorSection = {
-      fluid: strapiNode.image.childImageSharp.fluid,
-      title: strapiNode.title,
-      content: strapiNode.largecontent
-    }
-   
    
    
     return (
@@ -61,34 +39,10 @@ const Neurofeedback = ({data}) => {
                  {name: 'description', content: 'okay'}
                ]} 
           />
-        <CommonBanner bannerData={{ imgFluid: banner.fluid, title: banner.title, subtitle: banner.subtitle}} /> 
-          <div className="container container-xl mx-auto py-16">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 mb-16">
-                  <div className="text-left border-r border-gray-400 border-banner-background px-4 lg:px-8">
-                        <h2 className="mb-8 underline-custom underline-custom--left">{leftColumn.title} </h2>
-                        <h3>{leftColumn.subtitle}</h3>
-                        <p>{leftColumn.content}</p>
-                      
-                  </div>
-                  <div className="lg:text-left px-4 lg:px-8">
-                        <h3>{rightColumn.title}</h3>
-                        <p>{rightColumn.content}</p>
-                       
-                  </div>
-              </div>
-             <div className="container container-xl mx-auto px-6">
-                <h2 className="text-center mb-16 underline-custom underline-custom--center">{majorSection.title}</h2>
-                 
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  <Img style={{maxHeight: '400px'}} fluid={majorSection.fluid}/>
-                  <div className="max-w-4xl mx-auto leading-loose px-5 pt-5 sm:pt-0">
-                    <p>{majorSection.content}</p>  
-                      <p>To find out more <Link className="btn text-center mt-4 block sm:ml-3 sm:inline-block" to="/contact">Contact me</Link></p>
-                  </div>
-                </div>
-                 
-             </div>
-          </div>
+            <h1 className="pt-32 pb-20 text-center">{pagetitle}</h1>
+            <div>
+               <Img  className="h-screen" fluid={bannerData.fluid}/>
+            </div>
         </Layout>
             
         </>
@@ -97,43 +51,28 @@ const Neurofeedback = ({data}) => {
 
 
 export const pageQuery = graphql`
- {
-      allStrapiNeurofeedbackpage {
-        edges {
+  query Neurofeedbackpage{
+
+    allMarkdownRemark(filter: {frontmatter: {identifier: {eq: "neurofeedback"}}}) {
+      edges {
           node {
-            banner {
-              title
-              subtitle
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 2200) {
-                    ...GatsbyImageSharpFluid_tracedSVG
-                  }
-                }
+              id
+              frontmatter {
+                  pagetitle
+                  banner {
+                      title
+                      image {
+                          childImageSharp {
+                              fluid (maxWidth: 2400) {
+                                  ...GatsbyImageSharpFluid
+                              }
+                          }
+                      }
+                  }  
               }
-            }
-            leftcolumn {
-              title
-              subtitle
-              description
-            }
-            rightcolumn {
-              title
-              subtitle
-              description
-            }
-            image {
-              childImageSharp {
-                fluid (maxWidth: 1000) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
-            }
-            title
-            largecontent
           }
-        }
       }
+  }
 }
 `
 

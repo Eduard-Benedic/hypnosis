@@ -13,95 +13,15 @@ import SEO from '../components/seo'
 
 
 const AboutPage = ({data}) => {
-
-//     const data = useStaticQuery(graphql`
-//     {
-//         allContentfulAbout {
-//             edges {
-//                 node {
-
-//                 seoTags {
-//                     seoTitle
-//                     seoMetadescription
-//                 }
-//                 aboutBanner {
-//                     fluid (maxWidth: 1900) {
-//                         ...GatsbyContentfulFluid_tracedSVG
-//                     }
-//                 }
-//                 title
-//                 firstColumnTitle
-//                 firstColumnDescription {
-//                     json
-//                 }
-//                 secondColumnTitle
-//                 secondColumnDescription {
-//                     json
-//                 }
-//                 thirdColumnTitle
-//                 thirdColumnDescription {
-//                     json
-//                 }
-//                 aboutPicture {
-//                     fluid {
-//                         ...GatsbyContentfulFluid_tracedSVG
-//                     }
-//                 }
-//                 }
-//             }
-//             }
-
-//     }`
-// );
-
-
-    
-    
-    // const allContentfulNode = data.allContentfulAbout.edges[0].node;
-
-    // const bannerFluid = allContentfulNode.aboutBanner.fluid;
-
-    // const title = allContentfulNode.title;
-
-    // const firstColumnTitle = allContentfulNode.firstColumnTitle;
-    // const firstColumnDescription = allContentfulNode.firstColumnDescription.json;
-
-    // const secondColumnTitle = allContentfulNode.secondColumnTitle;
-    // const secondColumnDescription = allContentfulNode.secondColumnDescription.json;
-
-    // const thirdColumnTitle = allContentfulNode.thirdColumnTitle;
-    // const thirdColumnDescription = allContentfulNode.thirdColumnDescription.json;
-
-    // const imgFluid = allContentfulNode.aboutPicture.fluid;
-
-
-
-    // const headTitle = allContentfulNode.seoTags.seoTitle;
-    // const metaDescription = allContentfulNode.seoTags.seoMetadescription;
-
-
-    const strapiNode = data.allStrapiAboutpage.edges[0].node;
-
-    const bannerFluid = strapiNode.Aboutbanner.image.childImageSharp.fluid;
-
-    const leftColumn = {
-        title: strapiNode.leftcolumn.title,
-        subtitle: strapiNode.leftcolumn.subtitle,
-        content: strapiNode.leftcolumn.description
-    }
-
-    const rightColumn = {
-        title: strapiNode.rightcolumn.title,
-        subtitle: strapiNode.rightcolumn.subtitle,
-        content: strapiNode.rightcolumn.description
-    }
-
-    const middleColumn = {
-        title: strapiNode.middlecolumn.title,
-        content: strapiNode.middlecolumn.description
-    }
-
-    const middleFluid = strapiNode.middleimage.childImageSharp.fluid;
+        const frontmatter = data.allMarkdownRemark.edges[0].node.frontmatter;
+        const bannerData = {
+            title: frontmatter.banner.title,
+            fluid: frontmatter.banner.image.childImageSharp.fluid
+        }
+      
+        const leftcol = frontmatter.leftcol;
+        const rightcol = frontmatter.rightcol;
+        const middlecol = frontmatter.middlecol;
 
     return (
         <>
@@ -113,83 +33,80 @@ const AboutPage = ({data}) => {
                         {'http-equiv': 'Content-Type', content: 'text/html;'},
                     ]}
             />
-            <CommonBanner bannerData={{ imgFluid: bannerFluid, title: 'some title'}} /> 
+            <CommonBanner data={bannerData} /> 
                            
             <div className="container container-xl px-8 mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 pt-10 pb-6 lg:pt-20 lg:pb-10">
                     <div>  
-                        <h2 className="font-body underline-custom underline-custom--left">{leftColumn.title}</h2>
-                        <h4>{leftColumn.subtitle}</h4>
-                        <p>{leftColumn.content}</p>
+                        <h2 className="font-body underline-custom underline-custom--left">{leftcol.title}</h2>
+                        <h4>{leftcol.subtitle}</h4>
+                        <p>{leftcol.description}</p>
                     </div>
                     <div>
-                        <h2 className="font-body underline-custom underline-custom--left">{rightColumn.title}</h2>
-                        <h4>{rightColumn.subtitle}</h4>
-                        <p>{rightColumn.content}</p>
+                        <h2 className="font-body underline-custom underline-custom--left">{rightcol.title}</h2>
+                        <h4>{rightcol.subtitle}</h4>
+                        <p>{rightcol.description}</p>
                     </div>
                 </div>
             </div>
             <div className="container container-xl px-8 mx-auto  text-center">
                 <div className="max-w-lg mx-auto mb-8">
-                    <h2 className="font-body">{middleColumn.title}</h2>
-                    <p>{middleColumn.content}</p>
-                    {/* {documentToReactComponents(thirdColumnDescription)}  */}
+                    <h2 className="font-body">{middlecol.title}</h2>
+                    <p>{middlecol.description}</p>
+                    
                 </div>
-                   <Img fluid={middleFluid} className='w-1/5 mx-auto mb-10'/>
+                   <Img fluid={middlecol.image.childImageSharp.fluid} className='w-1/5 mx-auto mb-10'/>
             </div>
 
             </Layout>
         </>
     )
 }
-
-
 export const query = graphql`
-    {
-
-
-        allStrapiAboutpage {
-            edges {
-                node {
-                Aboutbanner {
-                    image {
-                        childImageSharp {
-                            fluid(maxWidth: 2200) {
-                                ...GatsbyImageSharpFluid_tracedSVG
+query AboutPageMarkdown {
+        allMarkdownRemark(filter: {frontmatter: {identifier: {eq: "about"}}}) {
+        edges {
+            node {
+                id
+                frontmatter {
+                    banner {
+                        title
+                        image {
+                            childImageSharp {
+                                fluid (maxWidth: 2400) {
+                                    ...GatsbyImageSharpFluid
+                                }
                             }
                         }
                     }
-                    title
-                    subtitle
-                }
-                leftcolumn {
-                    title
-                    subtitle
-                    description
-                }
-                rightcolumn {
-                    title
-                    subtitle
-                    description
-                }
-                middlecolumn {
-                    title
-                    subtitle
-                    description
-                }
-                middleimage {
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid_tracedSVG
+                    leftcol {
+                        title
+                        subtitle
+                        description
+                    }
+                    rightcol {
+                        title
+                        subtitle
+                        description
+                    }
+                    middlecol {
+                        title
+                        subtitle
+                        description
+                        image {
+                            childImageSharp {
+                                fluid(maxWidth: 600) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
                         }
                     }
-                }
+                      
                 }
             }
-            }
+        }
     }
-    
-
+}
 `
 
 
