@@ -1,20 +1,12 @@
 import React from "react"
-
-
-
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CardComponent from "../components/CardComponent"
-
-
 import HomeBanner from '../components/HomeBanner'
 import HalfGridImg from "../components/HalfGridImg"
-
 import Img from 'gatsby-image'
 import {Link} from 'gatsby'
-
-
 
 const IndexPage = ({data}) =>  {
 
@@ -35,10 +27,7 @@ const description = strapiNode.bannertext[0].description;
     description
 }
 
-
-
 // ================ SERVICES SECTION ========================
-
 const services = strapiNode.services;
 
 // =============== IMAGETEXTTRIAD SECTION ==================
