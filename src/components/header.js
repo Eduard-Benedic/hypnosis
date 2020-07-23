@@ -31,25 +31,24 @@ const Header = () => {
  
   return (
     <>
-      <header className="font-body w-full fixed z-50 top-0 left-0 right-0">
-        <div className="block md:hidden fixed z-50 top-0 right-0 pt-8 pr-4 text-4xl text-right" style={{color: '#F97F8C'}}>
+      <header className="w-full fixed z-50 top-0 left-0 right-0">
+        <div className="md:hidden fixed z-50 top-0 right-0 pt-8 pr-4 text-4xl text-right">
           
            <FontAwesomeIcon className={!nav ? 'hidden' : 'block'} onClick={() => showNav(!nav)}  icon={faBars} />
            <FontAwesomeIcon className={nav ? 'hidden' : 'block'} onClick={() => showNav(!nav)}  icon={faTimes} />
         </div>
         <div>
-          <nav style={{backgroundColor: '#6b366be0'}} className={`md:hidden fixed inset-0 z-40 transform ${nav ? '-translate-x-full' : 'translate-x-0'} text-white flex flex-col h-screen justify-center items-center transition transition-transform duration-300 ease-linear`}>
-            
+          <nav className={`md:hidden fixed inset-0 z-40 transform ${nav ? '-translate-x-full' : 'translate-x-0'} bg-main-color text-white flex flex-col h-screen justify-center items-center transition transition-transform duration-300 ease-linear`}>
             {menuLinks.map((link, index) => {
               return  <Link key={index*2  } data-link="true"  className="mr-4 mb-5 tracking-widest uppercase text-white" to={link.to}>{link.name}</Link>
             })}
           </nav>
         </div>
     
-        <nav className="hidden md:block absolute inset-x-0 z-50 bg-banner-background">
+        <nav className="hidden md:block absolute inset-x-0 z-50 bg-main-color" >
             <div  className="container py-4 flex justify-end mx-auto">
                 {menuLinks.map((link, index) => {
-                  return  <Link key={index}  className="mr-4  tracking-widest uppercase text-white" to={link.to}>{link.name}</Link>
+                  return  <Link key={index}  className="mr-4 text-lg font-bold tracking-wider text-white hover:text-second-color" to={link.to}>{link.name}</Link>
                 })}
           </div>
         </nav>

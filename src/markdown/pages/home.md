@@ -2,7 +2,7 @@
 identifier: "home"
 title: "Neurophynosis therapy"
 subtitle: "Neurohypnosis therapy subtitle"
-description: "This is a description for this page"
+description: "This is a description for this page it should be longer than the rest"
 bannerImage: ../../images/banner.jpg
 services: [
       {

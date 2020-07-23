@@ -38,20 +38,20 @@ const AboutPage = ({data}) => {
             <div className="container container-xl px-8 mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 pt-10 pb-6 lg:pt-20 lg:pb-10">
                     <div>  
-                        <h2 className="font-body underline-custom underline-custom--left">{leftcol.title}</h2>
-                        <h4>{leftcol.subtitle}</h4>
+                        <h2 className="mb-4 underline-custom underline-custom--left">{leftcol.title}</h2>
+                        <h3>{leftcol.subtitle}</h3>
                         <p>{leftcol.description}</p>
                     </div>
                     <div>
-                        <h2 className="font-body underline-custom underline-custom--left">{rightcol.title}</h2>
-                        <h4>{rightcol.subtitle}</h4>
+                        <h2 className="mb-4 underline-custom underline-custom--left">{rightcol.title}</h2>
+                        <h3>{rightcol.subtitle}</h3>
                         <p>{rightcol.description}</p>
                     </div>
                 </div>
             </div>
             <div className="container container-xl px-8 mx-auto  text-center">
                 <div className="max-w-lg mx-auto mb-8">
-                    <h2 className="font-body">{middlecol.title}</h2>
+                    <h2 className="mb-4">{middlecol.title}</h2>
                     <p>{middlecol.description}</p>
                     
                 </div>

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap');
-
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 @tailwind base;
 
 html {
@@ -20,16 +20,23 @@ h3 {
 
 
 p {
-    @apply text-sm;
+    @apply text-base;
     font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+li {
+    @apply text-base;
 }
 
 
 
 
 
-
 @tailwind components;
+.btn {
+    @apply  font-display text-base tracking-wider text-custom-white px-10 py-4 rounded;
+}
+
 
 @tailwind utilities;
 
@@ -86,9 +93,6 @@ main {
 
 
 
- .btn {
-     @apply  font-body bg-banner-background text-white px-8 py-2 rounded;
- }
 
 
 
@@ -105,4 +109,9 @@ main {
 .article > p {
     line-height: 2;
     
+}
+
+
+.gradient {
+    background-image: linear-gradient(to right, #3a0a42, #0000000f);
 }

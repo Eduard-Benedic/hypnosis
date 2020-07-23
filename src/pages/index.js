@@ -71,7 +71,7 @@ const IndexPage = ({data}) =>  {
 
             <HomeBanner data={bannerData} />
             <div className="container container-xl  py-10 md:py-20 mx-auto">
-                  <h2 className="font-body text-center mb-16 sm:mb-20 underline-custom underline-custom--center">Our services</h2>
+                  <h2 className="text-center mb-12 underline-custom underline-custom--center">Our services</h2>
                 <div ref={servicesRef} className="grid row-gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     {serviceArray.map((service,index) => {
                         return( <div className="opacity-0 transform translate-x-12">
@@ -103,7 +103,7 @@ const IndexPage = ({data}) =>  {
                         })
                   }
             </div>
-            <div ref={neurofeedbackRef} className="container container-xl py-8 sm:py-16 mx-auto text-center px-4">
+            <div ref={neurofeedbackRef} className="container container-xl my-8 sm:my-16 mx-auto text-center px-4">
                   <h2 className="opacity-0 mb-8 transform translate-y-20 font-body underline-custom underline-custom--center text-main-color tracking-wider">{neurofeedback.title}</h2> 
                   <h3 className="opacity-0 transform translate-y-20">{neurofeedback.subtitle}</h3>
                   <p className="opacity-0 transform translate-y-20 max-w-lg mx-auto mb-8">{neurofeedback.description}</p>
@@ -111,7 +111,7 @@ const IndexPage = ({data}) =>  {
                 <div className="opacity-0 transform translate-y-20">
                 <Img fluid={neurofeedback.image.childImageSharp.fluid} className="mb-8 shadow-md max-w-lg mx-auto"/>
                   </div>  
-                  <Link className="btn opacity-0 transform translate-y-20" to={`/neurofeedback`}> Read More</Link>
+                  <Link className="btn bg-second-color opacity-0 transform translate-y-20" to={`/neurofeedback`}> Read More</Link>
             </div> 
       </Layout>
   )

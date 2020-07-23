@@ -8,15 +8,15 @@ module.exports = {
     companyName: 'Neurohypnosis Therapy',
     menuLinks: [
       {
-        name: 'home',
+        name: 'Home',
         to: '/'
       },
       {
-        name: 'articles',
-        to: '/articles/1'
+        name: 'Blog',
+        to: '/blog/1'
       },
       {
-        name: 'about',
+        name: 'About',
         to: '/about'
       },
       {
@@ -24,7 +24,7 @@ module.exports = {
         to: '/neurofeedback'
       },
       {
-        name: 'contact',
+        name: 'Contact',
         to: '/contact'
       }
     ]

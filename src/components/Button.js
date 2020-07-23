@@ -7,7 +7,6 @@ const BtnComponent = ({text, link}) => {
         <>
         <div>
             <Link to={`/${link}`}> <button className="btn">{text} </button></Link>
-          
         </div>
          
         </>

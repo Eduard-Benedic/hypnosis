@@ -1,9 +1,10 @@
 ---
-title: 'P5.js Random Walk'
+title: 'Fear of Losing'
 publishedon: "05 Jan 2021"
 author: "Emanuel Benedic"
 published: true
 bannerimage: ../../images/banner.jpg
+summary: "This is the summary for the first blog it is needed for the blog list page."
 ---
 
 I know how it feels to be **unproductive** while you are adapting everything to your taste. Thanks to the extension ["Settings Sync"](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync), you can now straightforwardly automate this task.
