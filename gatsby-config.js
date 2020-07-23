@@ -50,11 +50,17 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown`,
-        path: path.join(__dirname, `src`, `markdown`),
+        name: `pages`,
+        path: path.join(__dirname, `src`, `markdown` ,`pages`),
       },
     },
-  
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: path.join(__dirname, `src`, `markdown`, `blog`),
+        name: 'blog',
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

@@ -1,7 +1,7 @@
 ---
 identifier: "about"
 banner: {
-      image: ../images/time.jpg,
+      image: ../../images/time.jpg,
       title: "About page"
 }
 leftcol: {
@@ -18,7 +18,7 @@ middlecol: {
       title: "My goal",
       subtitle: "Some subtitle",
       description: "Lorem ipsum dolores ipsum dolores ipsum about me lorem ipsum dolores ipsum dolores ipsum dlores",
-      image: ../images/jude_law.jpg
+      image: ../../images/jude_law.jpg
 }
 
 
