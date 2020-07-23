@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import Img from "gatsby-image"
 
 import { gsap }from 'gsap'
@@ -12,25 +12,26 @@ const HalfGridImg = ({data: { title, subtitle, description, fluid}})  => {
 
     const imgRef  = useRef(null);
     const textRef = useRef(null);
-    const tl = gsap.timeline();
+    
 
     useEffect(() => {
-        gsap.to(imgRef.current, {
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: imgRef.current,
                 start: "top center"
-            },
+            }
+        })
+        
+        tl.to(imgRef.current, {
+            
             transform: 'translateX(0)',
             opacity: 1,
-            duration: 1,
-    
+            duration: 0.6
         })
-        tl.to(textRef.current.children, {
-            scrollTrigger: {
-                trigger: textRef.current
-            }, 
+        .to(textRef.current.children, {
             opacity: 1,
             transform: 'translateX(0)', 
+            duration: 0.8,
             stagger: 0.2
         })
     },[])
@@ -38,7 +39,7 @@ const HalfGridImg = ({data: { title, subtitle, description, fluid}})  => {
         <>
             <div className="grid sm:grid-cols-2 grid-cols-1 shadow-md">
                 <div className="opacity-0 transform -translate-x-16" ref={imgRef}>
-                    {<Img fluid={fluid}/>}
+                    <Img fluid={fluid} />
                 </div>
 
                 <div>

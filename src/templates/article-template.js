@@ -35,8 +35,14 @@ const ArticleTemplate = ({data}) => {
                         {'http-equiv': 'Content-Type', content: 'text/html;'},
                     ]}
                />
-               <Img className="max-h-screen" fluid={fluid}/>
-                <div className="bg-custom-white pb-12">
+               <div className="relative">
+                   <div className="absolute z-10 inset-0 gradient">
+                       &nbsp;
+                   </div>
+                    <Img className="max-h-screen" fluid={fluid}/>
+               </div>
+               
+                <div className="bg-custom-white pb-12 relative z-20">
                     <div className="max-w-5xl mx-auto p-8  sm:p-12 bg-white shadow-md transform -translate-y-20">
                         <div className="pb-8 mb-8 border-b border-solid border-custom-white">
                             <h1 className="font-bold mb-2">{title}</h1> 

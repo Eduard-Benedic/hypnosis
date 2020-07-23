@@ -16,7 +16,7 @@ module.exports = {
             },
             colors: {
                 'first-color': '#5d6470',
-                'second-color': '#02b57b',
+                'second-color': '#2ba57d',
                 'third-color': '#e3c58f',
                 'banner-background': '#774f7da3',
                 'background-common': '#845b84',

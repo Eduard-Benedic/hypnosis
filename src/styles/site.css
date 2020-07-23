@@ -55,6 +55,20 @@ li {
     left: 0;
 }
 
+.underdash-left {
+    position: relative;
+}
+
+.underdash-left::after {
+    position: absolute;
+    height: 2px;
+    content: ' ';
+    background-color: #774f7da3;
+    width: 100px;
+    bottom: -10px;
+    left: 0;
+}
+
 
 .underline-custom--center::after {
     position: absolute;
@@ -113,5 +127,9 @@ main {
 
 
 .gradient {
-    background-image: linear-gradient(to right, #3a0a42, #0000000f);
+    background-image: linear-gradient(to right, #3a0a42, #3030300f);
+}
+
+.gradient-step {
+    background-image: linear-gradient(to right, #3a0a42 20%,#780a8a 70%, #6b6a6a8f);
 }

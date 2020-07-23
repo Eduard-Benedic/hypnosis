@@ -19,12 +19,12 @@ const FormComponent = () => {
           <>
                <div className="py-10 flex flex-col justify-center">
                     <div className="md:w-3/4 mx-auto px-4">
-                         <h2 className="text-xl sm:text-3xl text-custom-white  mb-10 sm:mb-20 pb-4 underdash">Please fill out this form and we will reach out ASAP</h2>
+                         <h2 className="max-w-2xl text-2xl text-custom-white  mb-10 pb-4 underdash">Daca aveti orice intrebare, va rugam sa completati formularul de mai jos:</h2>
                          <form>
                               <div className="grid grid-cols-1 gap-4 md:gap-8 md:grid-cols-2 mb-8">
                                    <div>
                                         <label htmlFor="firstName" className="inline-block text-base sm:text-xl text-custom-white">First name</label>
-                                        <span className="block mb-2  text-xs text-main-color">*Required</span>
+                                        <span className="block mb-2  text-xs text-second-color">*Required</span>
                                         <input
                                              onChange={(e) => handleInputChange(e)}
                                              value={formData.firstName || ''}
@@ -39,7 +39,7 @@ const FormComponent = () => {
                                         <label
                                              htmlFor="lastName"
                                              className="inline-block  text-base sm:text-xl text-custom-white">Last name</label>
-                                        <span className="block mb-2  text-xs text-main-color">*Required</span>
+                                        <span className="block mb-2  text-xs text-second-color">*Required</span>
                                         <input
                                              onChange={(e) => handleInputChange(e)}
                                              value={formData.lastName || ''}
