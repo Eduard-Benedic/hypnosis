@@ -69,6 +69,21 @@ li {
     left: 0;
 }
 
+.underline-center {
+    position: relative;
+}
+
+.underline-center::after {
+    position: absolute;
+    height: 2px;
+    content: ' ';
+    background-color: #774f7da3;
+    width: 100px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 
 .underline-custom--center::after {
     position: absolute;
@@ -132,4 +147,30 @@ main {
 
 .gradient-step {
     background-image: linear-gradient(to right, #3a0a42 20%,#780a8a 70%, #6b6a6a8f);
+}
+
+.content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.content h2::after {
+    position: absolute;
+    height: 2px;
+    content: ' ';
+    background-color: #774f7da3;
+    width: 100px;
+    bottom: -10px;
+    left: 0;
+}
+
+.content h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.85rem;
+}
+
+.content .gatsby-resp-image-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

@@ -71,7 +71,7 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 590,
+              maxWidth: 2400,
             },
           },
         ],
@@ -79,15 +79,15 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: `http://localhost:1337`,
-        queryLimit: 1000, // Default to 100
-        contentTypes: [`article`],
-        singleTypes: [`homepage`, `aboutpage`, `neurofeedbackpage`],
-      },  
-    },
+    // {
+    //   resolve: `gatsby-source-strapi`,
+    //   options: {
+    //     apiURL: `http://localhost:1337`,
+    //     queryLimit: 1000, // Default to 100
+    //     contentTypes: [`article`],
+    //     singleTypes: [`homepage`, `aboutpage`, `neurofeedbackpage`],
+    //   },  
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
