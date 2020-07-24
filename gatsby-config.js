@@ -19,15 +19,19 @@ module.exports = {
         submenu: [
           {
             name: 'Neurofeedback',
-            to: '/neurofeedback'
+            to: 'servicii/neurofeedback'
           },
           {
             name: 'Hipnoza',
-            to: '/hipnoza'
+            to: '/servicii/hipnoza'
           },
           {
             name: 'Terapie',
-            to: '/terapie'
+            to: '/servicii/terapie'
+          },
+          {
+            name: 'Online',
+            to: '/servicii/online'
           }
         ]
       },
@@ -47,7 +51,7 @@ module.exports = {
           },
           {
             name: 'Despre mine',
-            to: '/despre-mine'
+            to: '/about'
           },
           
         ]
@@ -89,6 +93,13 @@ module.exports = {
       options: {
         path: path.join(__dirname, `src`, `markdown`, `blog`),
         name: 'blog',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: path.join(__dirname, `src`, `markdown`, `servicii`),
+        name: 'servicii',
       },
     },
     {

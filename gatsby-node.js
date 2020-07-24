@@ -30,13 +30,29 @@ exports.createPages = async ({graphql, actions}) => {
                                         }
                                     }
                             }
+                    }
+                        
+                    servicii: allMarkdownRemark(filter: {fields: {collection: {eq: "servicii"}}}) {
+                        edges {
+                            node {
+                                fields {
+                                    collection
+                                    slug
+                                }
+                                
+                            }
                         }
-                } 
+                    }
+
+               
+                }
     `);
                 
     
     const edges = result.data.allMarkdownRemark.edges;
     const articleTemplate = path.resolve('src/templates/article-template.js');
+
+  
    
     edges.forEach(article => {
         const node = article.node;
@@ -77,6 +93,25 @@ exports.createPages = async ({graphql, actions}) => {
             }
         })
     });
+
+
+
+    const serviciiPage = result.data.servicii.edges;
+    const serviciiTemplate = path.resolve('src/templates/servicii-template.js');
+
+
+    serviciiPage.forEach(serviciu => {
+        
+        const node = serviciu.node;
+        const slug = node.fields.slug;
+    createPage({
+            path: slug,
+            component: serviciiTemplate,
+            context: {
+                slug: slug
+            }
+       })
+    })
 
 }
 

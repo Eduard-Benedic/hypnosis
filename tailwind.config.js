@@ -11,6 +11,9 @@ module.exports = {
             flexGrow: {
                 '2': 2
             },
+            zIndex: {
+                '-1': '-1'
+            },
             inset: {
                 'half': '50%'
             },
