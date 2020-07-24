@@ -21,7 +21,8 @@ module.exports = {
                 'banner-background': '#774f7da3',
                 'background-common': '#845b84',
                 'main-color': '#845b84',
-                'custom-white': '#e2e1e1'
+                'custom-white': '#e2e1e1',
+                'white-transparent': '#d6d4d457'
             }
         }
     }

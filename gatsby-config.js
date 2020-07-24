@@ -9,23 +9,53 @@ module.exports = {
     menuLinks: [
       {
         name: 'Home',
-        to: '/'
+        to: '/',
+        extensible: false,
+      },
+      {
+        name: 'Servicii',
+        to: '/service',
+        extensible: true,
+        submenu: [
+          {
+            name: 'Neurofeedback',
+            to: '/neurofeedback'
+          },
+          {
+            name: 'Hipnoza',
+            to: '/hipnoza'
+          },
+          {
+            name: 'Terapie',
+            to: '/terapie'
+          }
+        ]
       },
       {
         name: 'Blog',
-        to: '/blog/1'
+        to: '/blog/1',
+        extensible: false,
       },
       {
         name: 'About',
-        to: '/about'
-      },
-      {
-        name: 'Neurofeedback',
-        to: '/neurofeedback'
+        to: '/about',
+        extensible: true,
+        submenu: [
+          {
+            name: 'Intrebari frecvente',
+            to: '/intrebari-frecvente'
+          },
+          {
+            name: 'Despre mine',
+            to: '/despre-mine'
+          },
+          
+        ]
       },
       {
         name: 'Contact',
-        to: '/contact'
+        to: '/contact',
+        extensible: false,
       }
     ]
   },
